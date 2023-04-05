@@ -1,4 +1,4 @@
-package co.crisi.wordcounter.config;
+package co.crisi.config;
 
 import co.crisi.port.api.TextServicePort;
 import co.crisi.service.CountWordsService;
