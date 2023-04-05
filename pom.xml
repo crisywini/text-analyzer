@@ -6,6 +6,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>domain</module>
+    <module>infraestructure</module>
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -20,7 +21,11 @@
   <description>Project that allows to count words by given text</description>
   <properties>
     <java.version>17</java.version>
+    <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+    <org.lombok.version>1.18.24</org.lombok.version>
+    <org.lombok-mapstruct-binding.version>0.2.0</org.lombok-mapstruct-binding.version>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -30,6 +35,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
+      <version>${org.lombok.version}</version>
       <optional>true</optional>
     </dependency>
     <dependency>
