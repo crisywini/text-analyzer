@@ -12,8 +12,8 @@
   <groupId>com.example</groupId>
   <artifactId>word-counter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>word-counter</name>
-  <description>word-counter</description>
+  <name>text-analyzer</name>
+  <description>Project that allows to count words by given text</description>
   <properties>
     <java.version>17</java.version>
   </properties>
