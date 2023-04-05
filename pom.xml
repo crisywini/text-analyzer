@@ -8,6 +8,7 @@
     <module>domain</module>
     <module>infraestructure</module>
     <module>application</module>
+    <module>ms-launcher</module>
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>
