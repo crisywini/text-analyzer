@@ -7,15 +7,12 @@ import lombok.experimental.UtilityClass;
 public class TextDtoObjectMother {
 
     public static TextDto withEmptyText() {
-        return TextDto.builder()
-                .text("")
-                .build();
+        return new TextDto("");
     }
 
-    public static TextDto withText(){
-        return TextDto.builder()
-                .text("They stay with Professor Kirke, an eccentric but kind old man, who resides in a house filled with twists, turns, and surprises.")
-                .build();
+    public static TextDto withText() {
+        return new TextDto(
+                "They stay with Professor Kirke, an eccentric but kind old man, who resides in a house filled with twists, turns, and surprises.");
     }
 
 }
