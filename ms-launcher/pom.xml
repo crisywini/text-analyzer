@@ -22,6 +22,11 @@
       <artifactId>domain</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>co.crisi</groupId>
+      <artifactId>application</artifactId>
+      <version>${project.version}</version>
+    </dependency>
   </dependencies>
 
 </project>
