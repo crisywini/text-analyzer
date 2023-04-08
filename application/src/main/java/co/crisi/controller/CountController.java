@@ -2,7 +2,8 @@ package co.crisi.controller;
 
 import co.crisi.data.TextDto;
 import co.crisi.mapper.TextMapper;
-import co.crisi.port.api.TextServicePort;
+import co.crisi.port.api.CountServicePort;
+import java.util.Map;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,19 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/texts")
-public class TextController {
+public class CountController {
 
     @Autowired
-    private TextServicePort textService;
+    private CountServicePort countService;
 
     private final TextMapper textMapper = Mappers.getMapper(TextMapper.class);
 
-    @PostMapping
+    @PostMapping("/words")
     public ResponseEntity<Long> countWords(
             @RequestBody
                     TextDto textDto) {
-        return ResponseEntity.ok(textService.countWords(textMapper.mapToInfo(textDto)));
+        return ResponseEntity.ok(countService.countWords(textMapper.mapToInfo(textDto)));
+    }
 
+    @PostMapping("/group/words")
+    public ResponseEntity<Map<String, Long>> countGroupByWord(
+            @RequestBody
+                    TextDto textDto) {
+        return ResponseEntity.ok(countService.countGroupByWord(textMapper.mapToInfo(textDto)));
     }
 
 }
