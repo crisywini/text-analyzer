@@ -1,4 +1,5 @@
-![workflow](https://github.com/crisywini/text-analyzer/actions/workflows/main.yml/badge.svg)
+[![Java CI with Maven](https://github.com/crisywini/text-analyzer/actions/workflows/maven.yml/badge.svg)](https://github.com/crisywini/text-analyzer/actions/workflows/maven.yml)
+
 
 # Text Analyzer
 
