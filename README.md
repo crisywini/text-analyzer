@@ -8,7 +8,7 @@ This text analyzer has these functionalities:
 - Count words giving a text
 - Extract the sentiment of a given text
 
-## Use
+## Usage
 
 Download the repo and run the next command in the root folder: 
 
