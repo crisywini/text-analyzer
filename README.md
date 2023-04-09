@@ -23,4 +23,16 @@ Then you can use the localhost:8080/ the exposed services at this moment are:
 | */texts/group/words* | POST | Counts how many times each word is in a given text |
 | */sentiments* | POST | Extract the sentiment of a given text |
 
+### Example:
 
+    curl --location 'localhost:8080/sentiments' \
+        --header 'Content-Type: application/json' \
+        --data '{
+        "text": "I am really happy, I finish my work earlier"
+    }'
+
+### Output: 
+
+    {
+        "Positive": 3
+    }
