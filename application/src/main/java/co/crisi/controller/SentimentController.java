@@ -22,7 +22,7 @@ public class SentimentController {
     private final TextMapper textMapper = Mappers.getMapper(TextMapper.class);
 
     @PostMapping
-    public ResponseEntity<Map<String, Double>> getSentiments(
+    public ResponseEntity<Map<String, Integer>> getSentiments(
             @RequestBody
                     TextDto textDto) {
         return ResponseEntity.ok(sentimentService.getSentiments(textMapper.mapToInfo(textDto)));

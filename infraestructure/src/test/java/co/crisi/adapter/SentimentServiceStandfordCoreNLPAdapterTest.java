@@ -18,7 +18,7 @@ class SentimentServiceStandfordCoreNLPAdapterTest {
 
         assertThat(sentiments)
                 .isNotEmpty()
-                .containsEntry("Positive", 3.0);
+                .containsEntry("Positive", 3);
     }
 
 }
