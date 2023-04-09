@@ -44,6 +44,19 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Sentiment analysis -->
+    <dependency>
+      <groupId>edu.stanford.nlp</groupId>
+      <artifactId>stanford-corenlp</artifactId>
+      <version>${edu.stanford.nlp.stanford-corenlp.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>edu.stanford.nlp</groupId>
+      <artifactId>stanford-corenlp</artifactId>
+      <version>${edu.stanford.nlp.stanford-corenlp.version}</version>
+      <classifier>models</classifier>
+    </dependency>
+
   </dependencies>
 
   <build>

@@ -6,3 +6,4 @@
 This text analyzer has these functionalities: 
 
 - Count words giving a text
+- Extract the sentiment of a given text
