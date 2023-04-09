@@ -15,9 +15,13 @@ public class TextInfoObjectMother {
                 "La posada Roca de Guía era suya, y también era suyo el tercer silencio. Así debía ser, pues ese era el mayor de los tres silencios y envolvía a los otros dos.");
     }
 
-    public static TextInfo withTextToGroupBy(){
+    public static TextInfo withTextToGroupBy() {
         return new TextInfo(
                 "The thing about this, is that the is two times same as that");
+    }
+
+    public static TextInfo withTextSentimentPositive() {
+        return new TextInfo("The thing is that this project looks amazing dude, I am really happy for you,congrats!");
     }
 
 }

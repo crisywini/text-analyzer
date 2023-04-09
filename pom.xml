@@ -26,6 +26,7 @@
     <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
     <org.lombok.version>1.18.24</org.lombok.version>
     <org.lombok-mapstruct-binding.version>0.2.0</org.lombok-mapstruct-binding.version>
+    <edu.stanford.nlp.stanford-corenlp.version>4.5.2</edu.stanford.nlp.stanford-corenlp.version>
   </properties>
 
   <dependencies>
