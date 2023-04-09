@@ -5,6 +5,6 @@ import java.util.Map;
 
 public interface SentimentServicePort {
 
-    Map<String, Double> getSentiments(TextInfo textInfo);
+    Map<String, Integer> getSentiments(TextInfo textInfo);
 
 }

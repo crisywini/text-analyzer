@@ -4,17 +4,13 @@ import co.crisi.data.TextInfo;
 import co.crisi.port.api.SentimentServicePort;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
-import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
-import edu.stanford.nlp.sentiment.SentimentCoreAnnotations.SentimentAnnotatedTree;
-import edu.stanford.nlp.trees.Tree;
-import edu.stanford.nlp.util.CoreMap;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Collectors;
 import lombok.val;
-import org.ejml.simple.SimpleMatrix;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,18 +26,16 @@ public class SentimentServiceStandfordCoreNLPAdapter implements SentimentService
 
 
     @Override
-    public Map<String, Double> getSentiments(TextInfo textInfo) {
-        Annotation annotation = pipeline.process(textInfo.text());
-        Map<String, Double> sentiments = new HashMap<>();
-        for (CoreMap sentence : annotation
-                .get(CoreAnnotations.SentencesAnnotation.class)) {
-            Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
-            double sentiment = RNNCoreAnnotations.getPredictedClass(tree);
-            String sentimentType = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
-            sentiments.put(sentimentType, sentiment);
-        }
-
-        return sentiments;
+    public Map<String, Integer> getSentiments(TextInfo textInfo) {
+        val annotation = pipeline.process(textInfo.text());
+        return annotation.get(CoreAnnotations.SentencesAnnotation.class).stream()
+                .map(sentence -> {
+                    val tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
+                    val score = RNNCoreAnnotations.getPredictedClass(tree);
+                    val sentimentType = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
+                    return Pair.of(sentimentType, score);
+                })
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
     }
 
 }
