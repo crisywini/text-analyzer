@@ -33,6 +33,6 @@ Then you can use the localhost:8080/ the exposed services at this moment are:
 
 ### Output: 
 
-    {
-        "Positive": 3
-    }
+    
+        Positive
+    
