@@ -1,16 +1,14 @@
 package co.crisi.adapter;
 
+import co.crisi.SentimentNotFoundException;
 import co.crisi.data.TextInfo;
 import co.crisi.port.api.SentimentServicePort;
-import edu.stanford.nlp.ling.CoreAnnotations;
-import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
+import co.crisi.service.CleanTextService;
+import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
-import java.util.Map;
+import edu.stanford.nlp.sentiment.SentimentCoreAnnotations.SentimentClass;
 import java.util.Properties;
-import java.util.stream.Collectors;
 import lombok.val;
-import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,16 +24,12 @@ public class SentimentServiceStandfordCoreNLPAdapter implements SentimentService
 
 
     @Override
-    public Map<String, Integer> getSentiments(TextInfo textInfo) {
-        val annotation = pipeline.process(textInfo.text());
-        return annotation.get(CoreAnnotations.SentencesAnnotation.class).stream()
-                .map(sentence -> {
-                    val tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
-                    val score = RNNCoreAnnotations.getPredictedClass(tree);
-                    val sentimentType = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
-                    return Pair.of(sentimentType, score);
-                })
-                .collect(Collectors.toMap(Pair::getKey, Pair::getValue));
+    public String getSentiment(TextInfo textInfo) {
+        val annotation = pipeline.process(CleanTextService.cleanText(textInfo.text()));
+        return annotation.get(SentencesAnnotation.class).stream()
+                .map(sentence -> sentence.get(SentimentClass.class))
+                .findFirst()
+                .orElseThrow(() -> new SentimentNotFoundException(textInfo.text()));
     }
 
 }

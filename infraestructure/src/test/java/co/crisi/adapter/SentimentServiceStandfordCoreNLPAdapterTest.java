@@ -14,11 +14,11 @@ class SentimentServiceStandfordCoreNLPAdapterTest {
     void whenPositive_shouldReturnPositive() {
 
         val textInfo = TextInfoObjectMother.withTextSentimentPositive();
-        val sentiments = sentimentService.getSentiments(textInfo);
+        val sentiments = sentimentService.getSentiment(textInfo);
 
         assertThat(sentiments)
                 .isNotEmpty()
-                .containsEntry("Positive", 3);
+                .isEqualTo("Positive");
     }
 
 }

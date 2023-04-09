@@ -3,7 +3,6 @@ package co.crisi.controller;
 import co.crisi.data.TextDto;
 import co.crisi.mapper.TextMapper;
 import co.crisi.port.api.SentimentServicePort;
-import java.util.Map;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,10 +21,10 @@ public class SentimentController {
     private final TextMapper textMapper = Mappers.getMapper(TextMapper.class);
 
     @PostMapping
-    public ResponseEntity<Map<String, Integer>> getSentiments(
+    public ResponseEntity<String> getSentiments(
             @RequestBody
                     TextDto textDto) {
-        return ResponseEntity.ok(sentimentService.getSentiments(textMapper.mapToInfo(textDto)));
+        return ResponseEntity.ok(sentimentService.getSentiment(textMapper.mapToInfo(textDto)));
     }
 
 }
