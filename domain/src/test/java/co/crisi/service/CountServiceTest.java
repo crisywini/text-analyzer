@@ -1,6 +1,7 @@
 package co.crisi.service;
 
 import co.crisi.service.objectmother.TextInfoObjectMother;
+import java.util.List;
 import java.util.Map;
 import lombok.val;
 import org.junit.jupiter.api.Nested;
@@ -50,6 +51,24 @@ class CountServiceTest {
                     .containsEntry("TWO", 1L)
                     .containsEntry("ABOUT", 1L)
                     .containsEntry("THING", 1L);
+        }
+
+    }
+
+    @Nested
+    class GetMostRepeatedWords {
+
+        @Test
+        void whenNormalText_shouldRetrieve10MostRepeatedWords() {
+            val textInfo = TextInfoObjectMother.withTextToGroupBy();
+            val expectedOrder = List.of("THAT", "THE", "IS", "SAME", "AS", "TIMES", "THIS", "TWO", "ABOUT", "THING");
+
+            val mostRepeatedWords = countService.getMostRepeatedWords(textInfo);
+
+            assertThat(mostRepeatedWords)
+                    .isNotEmpty()
+                    .doesNotHaveDuplicates()
+                    .isEqualTo(expectedOrder);
         }
 
     }
