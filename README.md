@@ -21,7 +21,9 @@ Then you can use the localhost:8080/ the exposed services at this moment are:
 |--|--|--|
 | */texts/words* | POST | Counts the total of the words in a given text |
 | */texts/group/words* | POST | Counts how many times each word is in a given text |
+| */texts/most-repeated/words* | POST | Get the 10 most repeated words and its concurrency |
 | */sentiments* | POST | Extract the sentiment of a given text |
+
 
 ### Example:
 
