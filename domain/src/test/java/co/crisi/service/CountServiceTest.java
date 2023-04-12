@@ -31,6 +31,17 @@ class CountServiceTest {
                     .isEqualTo(expectedWords);
         }
 
+        @Test
+        void whenEmptyText_shouldThrowException() {
+            val textInfo = TextInfoObjectMother.emptyText();
+
+            val exception = Assertions.assertThrows(EmptyTextException.class,
+                    () -> countService.countWords(textInfo));
+
+            assertThat(exception)
+                    .hasMessage("The input is blank! Couldn't do any operation with it!");
+        }
+
     }
 
 
@@ -56,6 +67,17 @@ class CountServiceTest {
                     .containsEntry("THING", 1L);
         }
 
+        @Test
+        void whenEmptyText_shouldThrowAnException() {
+            val textInfo = TextInfoObjectMother.emptyText();
+
+            val exception = Assertions.assertThrows(EmptyTextException.class,
+                    () -> countService.countGroupByWord(textInfo));
+
+            assertThat(exception)
+                    .hasMessage("The input is blank! Couldn't do any operation with it!");
+        }
+
     }
 
     @Nested
@@ -79,7 +101,7 @@ class CountServiceTest {
         }
 
         @Test
-        void whenNoText_shouldRetrieveEmpty() {
+        void whenNoText_shouldThrowAnException() {
             val textInfo = TextInfoObjectMother.emptyText();
 
             val exception = Assertions.assertThrows(EmptyTextException.class,
