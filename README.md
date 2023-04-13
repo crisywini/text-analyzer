@@ -7,6 +7,8 @@ This text analyzer has these functionalities:
 
 - Count words giving a text
 - Extract the sentiment of a given text
+- Get the most repeated words order by times seen
+- Get how many times each word appears in the text
 
 ## Usage
 
