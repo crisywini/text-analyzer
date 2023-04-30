@@ -40,3 +40,6 @@ Then you can use the localhost:8080/ the exposed services at this moment are:
     
         Positive
     
+#### Additional:
+
+I would like to create an experimental branch and tried to do some experimental features, or maybe the same features like countWords but thinking in different programming paradigms.
